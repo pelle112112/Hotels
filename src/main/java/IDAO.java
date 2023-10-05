@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IDAO<T> {
-    Iterable<T> getall();
-    T getById(int id);
+    List<T> getall(String entityName);
+    T getById(int id, Class<T> tclass);
     void create(T t);
     void update(T t, int id);
-    void delete(int id);
+    boolean delete(int id, Class<T> tclass);
 }

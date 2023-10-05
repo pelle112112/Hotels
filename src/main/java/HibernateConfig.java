@@ -18,7 +18,7 @@ public class HibernateConfig {
 
             Properties props = new Properties();
 
-            props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/hotels?currentSchema=public");
+            props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/hoteldb?currentSchema=public");
             props.put("hibernate.connection.username", "postgres");
             props.put("hibernate.connection.password", "postgres");
             props.put("hibernate.show_sql", "true"); // show sql in console
@@ -54,6 +54,8 @@ public class HibernateConfig {
     private static void getAnnotationConfiguration(Configuration configuration) {
         // add annotated classes
         // configuration.addAnnotatedClass(<YOUR ENTITY>.class);
+        configuration.addAnnotatedClass(Hotel.class);
+        configuration.addAnnotatedClass(Room.class);
     }
 
     public static EntityManagerFactory getEntityManagerFactoryConfig() {

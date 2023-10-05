@@ -2,7 +2,8 @@ import io.javalin.Javalin;
 
 import java.util.*;
 
-public class HotelDAO extends DAO {
+public class HotelDAO {
+    /*
     private List<Hotel> list = Arrays.asList(
             new Hotel(1, "Four Seasons", "Vesterbrogade 5", Arrays.asList(
                     new Room(1, 1, 1, 1000),
@@ -34,12 +35,12 @@ public class HotelDAO extends DAO {
        });
     }
 
-    @Override
+
     public Iterable getall() {
         return list;
     }
 
-    @Override
+
 
     public Object getById(int id) {
         return list.stream()
@@ -48,7 +49,7 @@ public class HotelDAO extends DAO {
                 .orElse(null);
     }
 
-    @Override
+
     public void delete(int id) {
         List<Hotel> testList = new ArrayList<>();
         testList.addAll(list);
@@ -59,5 +60,7 @@ public class HotelDAO extends DAO {
                 .ifPresent(testList::remove);
         list = testList;
         }
+
+     */
 
 }
