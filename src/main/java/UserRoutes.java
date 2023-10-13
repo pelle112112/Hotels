@@ -12,6 +12,7 @@ public class UserRoutes {
     public static void main(String[] args) {
         ISecurity securityController = new SecurityController();
 
+
         Javalin app = Javalin
                 .create()
                 .start(7007)

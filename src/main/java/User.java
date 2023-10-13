@@ -20,14 +20,12 @@ import java.util.stream.Collectors;
 @Table(name = "users")
 public class User {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
     private String username;
     private String password;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "user_username",referencedColumnName = "username"),
             inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
     Set<Role> roles;
 
@@ -36,8 +34,7 @@ public class User {
         this.password = BCrypt.hashpw(this.password, BCrypt.gensalt());
     }
     public User(String username, String password) {
-        String salt = BCrypt.gensalt();
-        String hashed = BCrypt.hashpw(password, salt);
+        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
         this.username = username;
         this.password = hashed;
     }

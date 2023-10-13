@@ -1,5 +1,7 @@
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Query;
 
 import java.util.List;
 
@@ -24,12 +26,13 @@ public class UserDAO {
     }
 
     public User getUserByusername(String username){
-        try (EntityManager em = emf.createEntityManager()){
-            return em.find(User.class, username);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return null;
+        try(EntityManager em = emf.createEntityManager()){
+            User user = em.find(User.class, username);
+            if(user == null) {
+                throw new EntityNotFoundException("No user found with username: " + username);
+            }
+            user.getRoles().size();
+            return user;
         }
     }
     public List<User> getAllUsers(){

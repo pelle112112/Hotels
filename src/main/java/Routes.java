@@ -2,6 +2,7 @@ import io.javalin.Javalin;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.Hibernate;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,15 +15,16 @@ public class Routes {
         EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig();
 
         try(EntityManager em = emf.createEntityManager()){
+            String test1 = BCrypt.hashpw("123456", BCrypt.gensalt());
 
             em.getTransaction().begin();
             em.createNativeQuery("INSERT INTO public.hotel (address,name) VALUES ('address1','Motel B');").executeUpdate();
             em.createNativeQuery("INSERT INTO public.hotel (address,name) VALUES ('address2','Four seasons');").executeUpdate();
             em.createNativeQuery("INSERT INTO public.room (price,roomnumber,hotel_id) VALUES ('1000','42','1');").executeUpdate();
             em.createNativeQuery("INSERT INTO public.room (price,roomnumber,hotel_id) VALUES ('400','43','2');").executeUpdate();
-            em.createNativeQuery("INSERT INTO public.users (password, username) VALUES ('123456','MadsPedersen');").executeUpdate();
-            em.createNativeQuery("INSERT INTO public.roles (role) VALUES ('admin');").executeUpdate();
-            em.createNativeQuery("INSERT INTO public.user_role (user_id,role_id) VALUES ('1','1');").executeUpdate();
+            em.createNativeQuery("INSERT INTO public.users (password, username) VALUES ('"+test1+"','MadsPedersen');").executeUpdate();
+            em.createNativeQuery("INSERT INTO public.roles (role) VALUES ('user');").executeUpdate();
+            em.createNativeQuery("INSERT INTO public.user_role (user_username,role_id) VALUES ('MadsPedersen','1');").executeUpdate();
             em.getTransaction().commit();
 
         }
