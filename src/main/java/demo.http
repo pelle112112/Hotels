@@ -1,0 +1,13 @@
+GET http://localhost:7000/api/hotels
+
+
+###
+
+POST http://localhost:7007/auth/login
+accept: application/json
+content-type: application/json
+
+{
+  "username": "madsPedersen",
+  "password": "123456"
+  }
