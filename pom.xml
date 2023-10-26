@@ -10,7 +10,7 @@
 
     <properties>
         <!-- DATABASE PROJECT NAME ON SERVER  -->
-        <db.name>actionsdemo</db.name>
+        <db.name>hoteldb</db.name>
         <javalin.port>7007</javalin.port>
         <!--        DEPENDENCY VERSIONS-->
         <maven.compiler.source>17</maven.compiler.source>
