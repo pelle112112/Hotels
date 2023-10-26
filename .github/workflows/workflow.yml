@@ -36,4 +36,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/<NAME OF YOUR PROJECT ON DOCKER HUB>:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/<lyft_repo_test>:latest
