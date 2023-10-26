@@ -33,7 +33,7 @@ public class Routes {
         //GET /api/hotels
         HotelDAODB daodb = HotelDAODB.getInstance();
         List<Hotel> hotels = daodb.getall("Hotel");
-        Javalin app = Javalin.create().start(7000);
+        Javalin app = Javalin.create().start(7007);
         app.get("/api/hotels", HotelController.getAllHotels());
         //GET /api/hotels/{id}
         app.get("/api/hotel/{id}", HotelController.getById());
